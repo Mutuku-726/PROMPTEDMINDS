@@ -95,15 +95,15 @@ export default function DashboardPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white flex">
+   <div className="min-h-screen bg-slate-950 text-white flex">
       <Sidebar />
 
-      <main className="flex-1 p-10">
+      <main className="flex-1 min-w-0 p-4 md:p-10">
         <div className="max-w-6xl mx-auto">
 
           {/* Header */}
           <div>
-            <h1 className="text-4xl font-bold text-blue-400">
+            <h1 className="text-3xl md:text-4xl font-bold text-blue-400">
               PromptedMinds
             </h1>
 
@@ -114,7 +114,7 @@ export default function DashboardPage() {
 
           {/* Welcome */}
           <div className="mt-8">
-            <h2 className="text-3xl font-bold">
+            <h2 className="text-2xl md:text-3xl font-bold">
               Marketing Dashboard
             </h2>
 

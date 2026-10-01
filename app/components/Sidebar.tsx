@@ -16,27 +16,33 @@ export default function Sidebar() {
   const navItems = [
     {
       href: "/",
-      label: "📊 Dashboard",
+      icon: "📊",
+      label: "Dashboard",
     },
     {
       href: "/captions",
-      label: "✍️ AI Captions",
+      icon: "✍️",
+      label: "AI Captions",
     },
     {
       href: "/ads",
-      label: "📢 AI Ads",
+      icon: "📢",
+      label: "AI Ads",
     },
     {
       href: "/leads",
-      label: "👥 Leads",
+      icon: "👥",
+      label: "Leads",
     },
     {
       href: "/analytics",
-      label: "📈 Analytics",
+      icon: "📈",
+      label: "Analytics",
     },
     {
       href: "/settings",
-      label: "⚙️ Settings",
+      icon: "⚙️",
+      label: "Settings",
     },
   ];
 
@@ -49,22 +55,22 @@ export default function Sidebar() {
   };
 
   return (
-    <aside className="w-64 min-h-screen bg-slate-900 border-r border-slate-800 p-6 text-white">
-
+    <aside className="w-20 md:w-64 min-h-screen flex-shrink-0 bg-slate-900 border-r border-slate-800 p-3 md:p-6 text-white">
+      
       {/* Brand */}
-      <div>
-        <h1 className="text-2xl font-bold text-blue-400">
-          PromptedMinds
+      <div className="text-center md:text-left">
+        <h1 className="text-xl md:text-2xl font-bold text-blue-400">
+          <span className="md:hidden">PM</span>
+          <span className="hidden md:inline">PromptedMinds</span>
         </h1>
 
-        <p className="text-slate-400 text-sm mt-1">
+        <p className="hidden md:block text-slate-400 text-sm mt-1">
           AI Marketing OS
         </p>
       </div>
 
       {/* Navigation */}
-      <nav className="mt-10 space-y-2">
-
+      <nav className="mt-8 space-y-3">
         {navItems.map((item) => {
           const active = isActive(item.href);
 
@@ -72,25 +78,36 @@ export default function Sidebar() {
             <Link
               key={item.href}
               href={item.href}
-              className={`block w-full px-4 py-3 rounded-lg transition ${
+              title={item.label}
+              className={`flex items-center justify-center md:justify-start gap-3 w-full px-2 md:px-4 py-3 rounded-lg transition ${
                 active
                   ? "bg-blue-600 text-white font-semibold"
                   : "text-slate-300 hover:bg-slate-800 hover:text-white"
               }`}
             >
-              {item.label}
+              <span className="text-lg md:text-base">
+                {item.icon}
+              </span>
+
+              <span className="hidden md:inline">
+                {item.label}
+              </span>
             </Link>
           );
         })}
-
       </nav>
 
       {/* Logout */}
       <button
         onClick={handleLogout}
-        className="mt-10 w-full text-left px-4 py-3 rounded-lg text-red-400 hover:bg-red-900/30 transition"
+        title="Log Out"
+        className="mt-8 flex items-center justify-center md:justify-start gap-3 w-full px-2 md:px-4 py-3 rounded-lg text-red-400 hover:bg-red-900/30 transition"
       >
-        🚪 Log Out
+        <span>🚪</span>
+
+        <span className="hidden md:inline">
+          Log Out
+        </span>
       </button>
 
     </aside>

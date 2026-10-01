@@ -156,7 +156,7 @@ export default function AdsPage() {
   return (
   <div className="flex min-h-screen bg-slate-950 text-white">
   <Sidebar />
-  <main className="flex-1 p-8">
+  <main className="flex-1 min-w-0 p-4 md:p-8">
       <div className="max-w-5xl mx-auto">
 
         {/* Header */}

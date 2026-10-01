@@ -183,7 +183,7 @@ export default function CaptionsPage() {
     <div className="flex min-h-screen bg-slate-950 text-white">
       <Sidebar />
 
-      <main className="flex-1 p-10">
+     <main className="flex-1 min-w-0 p-4 md:p-10">
         <div className="max-w-5xl mx-auto">
 
           {/* Header */}

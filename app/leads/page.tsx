@@ -225,7 +225,7 @@ export default function LeadsPage() {
     <div className="min-h-screen bg-slate-950 text-white flex">
       <Sidebar />
 
-      <main className="flex-1 p-10">
+      <main className="flex-1 min-w-0 p-4 md:p-10">
         <div className="max-w-6xl mx-auto">
 
           {/* Header */}
