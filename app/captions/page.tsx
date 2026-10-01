@@ -94,7 +94,7 @@ export default function CaptionsPage() {
         setLoading(false);
         return;
       }
-
+      
       const response = await fetch("/api/caption", {
         method: "POST",
         headers: {
@@ -121,6 +121,24 @@ export default function CaptionsPage() {
         setLoading(false);
         return;
       }
+      const { data: usageAllowed, error: usageError } =
+  await supabase.rpc("consume_ai_usage", {
+    p_user_id: user.id,
+  });
+
+if (usageError) {
+  setError("Unable to record AI usage. Please try again.");
+  setLoading(false);
+  return;
+}
+
+if (!usageAllowed) {
+  setError(
+    "You have reached your monthly AI usage limit. Please upgrade your plan to continue."
+  );
+  setLoading(false);
+  return;
+}
 
       const { data: savedCaption, error: saveError } = await supabase
         .from("captions")
