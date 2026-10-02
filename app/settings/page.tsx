@@ -14,7 +14,10 @@ export default function SettingsPage() {
   const [creativeMode, setCreativeMode] = useState(true);
 const [seoOptimization, setSeoOptimization] = useState(true);
 const [businessFocusedCopy, setBusinessFocusedCopy] = useState(true);
-
+const [plan, setPlan] = useState("free");
+const [aiUsage, setAiUsage] = useState(0);
+const [aiUsageLimit, setAiUsageLimit] = useState(50);
+const [subscriptionStatus, setSubscriptionStatus] = useState("active");
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
 
@@ -45,11 +48,10 @@ const [businessFocusedCopy, setBusinessFocusedCopy] = useState(true);
     const { data: profile, error: profileError } = await supabase
       .from("profiles")
      .select(
-  "full_name, business_name, default_platform, creative_mode, seo_optimization, business_focused_copy"
+  "full_name, business_name, default_platform, creative_mode, seo_optimization, business_focused_copy, plan, ai_usage, ai_usage_limit, subscription_status"
 )
-      .eq("id", user.id)
-      .maybeSingle();
-
+.eq("id", user.id)
+.maybeSingle();
   if (profileError) {
   setError(profileError.message);
 } else if (profile) {
@@ -60,9 +62,15 @@ const [businessFocusedCopy, setBusinessFocusedCopy] = useState(true);
   setCreativeMode(profile.creative_mode ?? true);
   setSeoOptimization(profile.seo_optimization ?? true);
   setBusinessFocusedCopy(profile.business_focused_copy ?? true);
+  
+setPlan(profile.plan ?? "free");
+setAiUsage(profile.ai_usage ?? 0);
+setAiUsageLimit(profile.ai_usage_limit ?? 50);
+setSubscriptionStatus(profile.subscription_status ?? "active");
 }
-    setLoading(false);
-  };
+
+setLoading(false);
+};
 
   const handleSaveProfile = async () => {
     setSaving(true);
