@@ -368,7 +368,7 @@ const { error: updateError } = await supabase
                   </span>
 
                   <span>
-                    12 / 50
+              {aiUsage} / {aiUsageLimit}  
                   </span>
                 </div>
 
@@ -401,5 +401,5 @@ const { error: updateError } = await supabase
         </div>
       </main>
     </div>
-  );
+  )
 }
