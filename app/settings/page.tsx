@@ -356,9 +356,14 @@ const { error: updateError } = await supabase
                   </p>
                 </div>
 
-                <button className="bg-blue-600 hover:bg-blue-500 px-5 py-3 rounded-xl font-medium transition">
-                  Upgrade Plan
-                </button>
+<button
+  onClick={() => {
+    window.location.href = "/pricing";
+  }}
+  className="bg-blue-600 hover:bg-blue-500 px-5 py-3 rounded-lg font-semibold transition"
+>
+  Upgrade Plan
+</button>
               </div>
 
               <div className="mt-6">
